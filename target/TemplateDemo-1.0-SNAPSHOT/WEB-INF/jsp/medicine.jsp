@@ -14,14 +14,14 @@
     <ul class="navbar-nav">
         <c:forEach var="cat" items="${loaithuoc}">
             <li class="nav-item">
-                <a class="nav-link" href="<c:url value="/medicine/?loaiThuocId=${cat.idloaithuoc}" />">${cat.tenloaithuoc}</a>
+                <a class="nav-link" href="<c:url value="/admin/medicine/?loaiThuocId=${cat.idloaithuoc}" />">${cat.tenloaithuoc}</a>
             </li>
         </c:forEach>
     </ul>
     
     <ul class="navbar-nav">
         <li class="nav-item">
-            <a class="nav-link " href="<c:url value="/medicine" />">
+            <a class="nav-link " href="<c:url value="/admin/medicine" />">
                 <i class="fas fa-sync-alt"/>&ensp;Reload</i>
             </a>
         </li>
@@ -43,7 +43,7 @@
 <div>
     <ul class="pagination">
         <c:forEach var="page" begin="1" end="${Math.ceil(thuocCounter/9)}">
-            <li class="page-item"><a class="page-link" href="<c:url value="/medicine" />?page=${page}">${page}</a></li>
+            <li class="page-item"><a class="page-link" href="<c:url value="/admin/medicine" />?page=${page}">${page}</a></li>
         </c:forEach>
     </ul>
 </div>
@@ -57,7 +57,7 @@
                         <img class="img-fluid" src="${t.hinhthuoc}" alt="${t.tenthuoc}" />
                     </c:if>
                     <c:if test="${!t.hinhthuoc.startsWith('https')}">
-                        <img class="img-fluid" src="<c:url value="images/medicine/ThuocDauDau/panadol.png" />" alt="${t.hinhthuoc}" />
+                        <img class="img-fluid" src="<c:url value="/images/medicine/ThuocDauDau/panadol.png" />" alt="${t.hinhthuoc}" />
                     </c:if>
                 </a>
             </div>

@@ -25,7 +25,7 @@ public class NhanVienDetailController {
     @Autowired
     private NhanVienService nhanVienService;
     
-    @GetMapping("/nhanvien/{idNV}")
+    @GetMapping("/admin/nhanvien/{idNV}")
     public String detail(Model model,@PathVariable(value = "idNV") int idNV){
         model.addAttribute("nhanvien", this.nhanVienService.getNhanVienById(idNV));
         return "nhanvien-detail";

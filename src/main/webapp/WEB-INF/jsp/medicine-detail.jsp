@@ -32,7 +32,7 @@
         <a href="javascript:;" class="btn btn-danger" onclick="deleteThuoc(${thuoc.idthuoc})">Xóa</a>
         <a href="<c:url value="/admin/quanlythuoc/?thuocId=${thuoc.idthuoc}" />" class="btn btn-info">Cập nhật</a>
         <a href="#" class="btn btn-success" onclick="addToToaThuoc(${thuoc.idthuoc}, '${thuoc.tenthuoc}', ${thuoc.dongia}, '${thuoc.cachdung}')">Thêm vào toa thuốc</a><br><br>
-        <a href="<c:url value="/medicine" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
+        <a href="<c:url value="/admin/medicine" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
     </div> 
     
 </div>

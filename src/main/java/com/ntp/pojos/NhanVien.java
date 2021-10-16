@@ -27,6 +27,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -54,9 +55,9 @@ public class NhanVien implements Serializable {
     @Column(name = "gioitinh")
     private String gioitinh;
     @Basic(optional = false)
-    @NotNull
+
     @Column(name = "ngaysinh")
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaysinh;
     @Basic(optional = false)
     @NotNull

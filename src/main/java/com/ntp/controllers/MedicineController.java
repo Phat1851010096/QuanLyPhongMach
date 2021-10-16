@@ -41,7 +41,7 @@ public class MedicineController {
         model.addAttribute("currentUser", session.getAttribute("currentUser"));
     }
     
-    @GetMapping("/medicine")
+    @GetMapping("/admin/medicine")
     public String medicine(Model model,
             @RequestParam(name = "loaiThuocId", required = false) String loaiThuocId,
             @RequestParam(value = "kw", required = false, defaultValue = "") String kw, 

@@ -53,13 +53,13 @@
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="<c:url value="/medicine"  />"><i class="fas fa-capsules"></i>&ensp;
+                                <a class="nav-link" href="<c:url value="/admin/medicine"  />"><i class="fas fa-capsules"></i>&ensp;
                                     Thuốc
                                 </a>
                             </li>
                             
                             <li class="nav-item">
-                                <a class="nav-link" href="<c:url value="/nhanvien"  />">
+                                <a class="nav-link" href="<c:url value="/admin/nhanvien"  />">
                                     <i class="fas fa-user-nurse"></i>&ensp;Nhân viên
                                 </a>
                             </li>

@@ -57,7 +57,7 @@
         <div>
             <ul class="pagination">
                 <c:forEach var="page" begin="1" end="${Math.ceil(nhanVienCounter/9)}">
-                    <li class="page-item"><a class="page-link" href="<c:url value="/nhanvien" />?page=${page}">${page}</a></li>
+                    <li class="page-item"><a class="page-link" href="<c:url value="/admin/nhanvien" />?page=${page}">${page}</a></li>
                 </c:forEach>
             </ul>
         </div>
@@ -67,12 +67,12 @@
             <c:forEach var="nv" items="${nhanvien}">
                 <div class="card col-md-3 .bg-light">
                     <div class="card-body">
-                        <a href="<c:url value="/nhanvien/${nv.idNV}" />">
+                        <a href="<c:url value="/admin/nhanvien/${nv.idNV}" />">
                             <c:if test="${nv.hinhanh.startsWith('https')}">
                                 <img class="img-fluid" src="${nv.hinhanh}" alt="${nv.tenNV}" />
                             </c:if>
                             <c:if test="${!nv.hinhanh.startsWith('https')}">
-                                <img class="img-fluid" src="<c:url value="images/employee/admin.png" />" alt="${nv.hinhanh}" />
+                                <img class="img-fluid" src="<c:url value="/images/employee/admin.png" />" alt="${nv.hinhanh}" />
                             </c:if>
                         </a>
                     </div>

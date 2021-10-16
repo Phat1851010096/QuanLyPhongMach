@@ -39,7 +39,7 @@ public class NhanVienController {
         model.addAttribute("lichtruc", this.lichTrucService.getLichTruc());
     }
     
-    @GetMapping("/nhanvien")
+    @GetMapping("/admin/nhanvien")
     public String nhanvien(Model model,
             @RequestParam(value = "kw", required = false, defaultValue = "") String kw, 
             @RequestParam(value = "page", required = false, defaultValue = "1") String page){

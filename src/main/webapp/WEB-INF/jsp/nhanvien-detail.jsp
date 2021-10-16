@@ -17,7 +17,7 @@
                     <img class="card-img-top img-fluid" src="${nhanvien.hinhanh}" alt="${nhanvien.hinhanh}" />
             </c:when>
             <c:when test="${nhanvien.hinhanh == null || nhanvien.hinhanh.startsWith('https') == false}">
-                <img class="card-img-top img-fluid" src="<c:url value="images/employee/admin.png" />" alt="${nhanvien.tenNV}" />
+                <img class="card-img-top img-fluid" src="<c:url value="/images/employee/admin.png" />" alt="${nhanvien.tenNV}" />
             </c:when>
         </c:choose>
     </div>
@@ -33,7 +33,7 @@
         <a href="javascript:;" class="btn btn-danger" onclick="deleteNhanVien(${nhanvien.idNV})">Xóa</a>
         <a href="<c:url value="/admin/quanlynhanvien/?idNV=${nhanvien.idNV}" />" class="btn btn-info">Cập nhật</a>
         <br><br>
-        <a href="<c:url value="/nhanvien" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
+        <a href="<c:url value="/admin/nhanvien" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
     </div> 
 </div>
 <!--<br><br> 

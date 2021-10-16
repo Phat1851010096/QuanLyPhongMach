@@ -26,6 +26,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -38,10 +39,11 @@ import org.springframework.web.multipart.MultipartFile;
 public class Thuoc implements Serializable {
 
     @Column(name = "ngaysx")
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date ngaysx;
+    
     @Column(name = "hansudung")
-    @Temporal(TemporalType.DATE)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date hansudung;
     @JoinColumns({
         @JoinColumn(name = "nhanvien_id", referencedColumnName = "idNV")})

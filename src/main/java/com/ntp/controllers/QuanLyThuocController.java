@@ -8,6 +8,7 @@ package com.ntp.controllers;
 
 import com.ntp.pojos.Thuoc;
 import com.ntp.service.ThuocService;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.validation.Valid;
@@ -31,7 +32,7 @@ public class QuanLyThuocController {
     @Autowired
     private ThuocService thuocService;
 
-
+    
     
     @GetMapping("/admin/quanlythuoc")
     public String addOrUpdateView(Model model,
@@ -48,7 +49,6 @@ public class QuanLyThuocController {
     @PostMapping("/admin/quanlythuoc")
     public String addOrUpdateThuoc(Model model, @DateTimeFormat(pattern = "yyyy-MM-dd") Date date ,@ModelAttribute(value = "thuoc") @Valid Thuoc thuoc, 
             BindingResult bindingResult){
-
 
         if (bindingResult.hasErrors()) {
             return "quanlythuoc";
