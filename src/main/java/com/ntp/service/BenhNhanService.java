@@ -6,12 +6,13 @@
 package com.ntp.service;
 
 import com.ntp.pojos.BenhNhan;
+import java.util.List;
 
 /**
  *
  * @author Phat Nguyen
  */
 public interface BenhNhanService {
-    boolean addBenhNhan(BenhNhan benhnhan);
+    boolean addOrUpdateBenhNhan(BenhNhan benhnhan);
     BenhNhan getBenhNhanById(int id);
 }

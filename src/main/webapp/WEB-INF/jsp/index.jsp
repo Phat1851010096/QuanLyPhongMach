@@ -21,7 +21,8 @@ Author     : Phat Nguyen
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing
                             elit sed do eiusmod tempor incididunt ut labore et dolore
                             magna aliqua. Quis ipsum suspendisse ultrices gravida.Risus cmodo viverra </p>
-                        <a href="#" class="btn_2">Make an appointment</a>
+                        
+                        <a href="<c:url value="/dangkykham/?idBN=${currentUser.benhnhan.idBN}&idLK=${currentUser.lichkham.idLK}" />" class="btn_2">Make an appointment</a>
                     </div>
                 </div>
             </div>
@@ -202,7 +203,7 @@ Author     : Phat Nguyen
             <c:forEach var="nv" items="${ExperNhanVien}">
                 <div class="card col-md-3 .bg-light">
                     <div class="card-body">
-                        <a href="<c:url value="/nhanvien/${nv[0]}" />">
+                        <a href="<c:url value="/admin/nhanvien/${nv[0]}" />">
                             <c:if test="${nv[2].startsWith('https')}">
                                 <img class="img-fluid" src="${nv[2]}" alt="${nv[1]}" />
                             </c:if>
@@ -302,10 +303,6 @@ Author     : Phat Nguyen
                                 <h5 class="card-title">First cattle which earth unto let health for
                                     can get and see what you </h5>
                             </a>
-<!--                            <ul>
-                                <li> <span class="ti-user"></span>Jhon mike</li>
-                                <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
-                            </ul>-->
 
                         </div>
                     </div>
@@ -320,10 +317,7 @@ Author     : Phat Nguyen
                                 <h5 class="card-title">First cattle which earth unto let health for
                                     can get and see what you </h5>
                             </a>
-<!--                            <ul>
-                                <li> <span class="ti-user"></span>Jhon mike</li>
-                                <li> <span class="ti-bookmark"></span>Clinic, doctors</li>
-                            </ul>-->
+
                         </div>
                     </div>
                 </div>

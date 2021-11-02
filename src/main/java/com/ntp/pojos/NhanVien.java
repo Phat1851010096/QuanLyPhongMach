@@ -6,27 +6,22 @@
 package com.ntp.pojos;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -80,12 +75,13 @@ public class NhanVien implements Serializable {
     @JoinColumn(name = "idchucvu", referencedColumnName = "idchucvu")
     @ManyToOne
     private ChucVu chucvu;
+    
     @JoinColumn(name = "idlichtruc", referencedColumnName = "idlichtruc")
     @ManyToOne
     private LichTruc lichtruc;
-    @JoinColumn(name = "idU", referencedColumnName = "id")
-    @ManyToOne
-    private User idU;
+
+    @OneToMany(mappedBy = "nhanvien")
+    private Collection<User> userCollection;
 
     
     @Transient
@@ -188,14 +184,6 @@ public class NhanVien implements Serializable {
         this.lichtruc = lichtruc;
     }
 
-    public User getIdU() {
-        return idU;
-    }
-
-    public void setIdU(User idU) {
-        this.idU = idU;
-    }
-
     public MultipartFile getFile() {
         return file;
     }
@@ -203,32 +191,14 @@ public class NhanVien implements Serializable {
     public void setFile(MultipartFile file) {
         this.file = file;
     }
-    
-    
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idNV != null ? idNV.hashCode() : 0);
-        return hash;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof NhanVien)) {
-            return false;
-        }
-        NhanVien other = (NhanVien) object;
-        if ((this.idNV == null && other.idNV != null) || (this.idNV != null && !this.idNV.equals(other.idNV))) {
-            return false;
-        }
-        return true;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
-
-    @Override
-    public String toString() {
-        return "com.ntp.pojos.Nhanvien[ idNV=" + idNV + " ]";
-    }
+  
     
 }

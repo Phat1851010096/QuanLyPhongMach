@@ -13,6 +13,7 @@ import com.ntp.formatter.LoaiThuocFormatter;
 import com.ntp.validator.thuocValidator;
 import com.ntp.validator.WebAppValidator;
 import java.util.HashSet;
+import java.util.Properties;
 import java.util.Set;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,8 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.validation.Validator;
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
@@ -111,7 +114,7 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
     @Bean
     public MessageSource messageSource(){
         ResourceBundleMessageSource source = new ResourceBundleMessageSource();
-        source.addBasenames("thuoc", "nhanvien");
+        source.addBasenames("thuoc", "nhanvien", "benhnhan");
         source.setDefaultEncoding("UTF-8");
         return source;
     }
@@ -133,6 +136,37 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
                 "secure", true
         ));
         return c;
+    }
+    
+    @Bean
+    public JavaMailSender getJavaMailSender() {
+        JavaMailSenderImpl mailSender = new JavaMailSenderImpl();
+        mailSender.setHost("smtp.gmail.com");
+        mailSender.setPort(587);
+
+        mailSender.setUsername(MyConstants.MY_EMAIL);
+        mailSender.setPassword(MyConstants.MY_PASSWORD);
+
+        Properties props = mailSender.getJavaMailProperties();
+        props.put("mail.transport.protocol", "smtp");
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
+
+        return mailSender;
+    }
+    
+    public class MyConstants {
+
+        // Replace with your email here:  
+        public static final String MY_EMAIL = "1851010096phat@ou.edu.vn";
+
+        // Replace password!!
+        public static final String MY_PASSWORD = "272732580";
+
+        // And receiver!
+        public static final String FRIEND_EMAIL = "tanphat41011@gmail.com";
+
     }
 
 }

@@ -82,6 +82,38 @@ and open the template in the editor.
         <put-attribute name="content" value="/WEB-INF/jsp/toathuoc.jsp" />
     </definition>
     
+    <definition name="dangkykham" extends="baseLayout">
+        <put-attribute name="title" value="Đăng ký khám" />
+        <put-attribute name="content" value="/WEB-INF/jsp/dangkykham.jsp" />
+    </definition>
+    
+    <definition name="hosobenhnhan" extends="baseLayout">
+        <put-attribute name="title" value="Hồ sơ bệnh nhân" />
+        <put-attribute name="content" value="/WEB-INF/jsp/hosobenhnhan.jsp" />
+    </definition>
+    
+    <definition name="hoadonthuoc" extends="baseLayout">
+        <put-attribute name="title" value="Hóa đơn thuốc" />
+        <put-attribute name="content" value="/WEB-INF/jsp/hoadonthuoc.jsp" />
+    </definition>
+    
+    <definition name="lichkhambenhnhan" extends="baseLayout">
+        <put-attribute name="title" value="Lịch khám bệnh nhân" />
+        <put-attribute name="content" value="/WEB-INF/jsp/lichkhambenhnhan.jsp" />
+    </definition>
+    
+    <definition name="lichkhamcanhan" extends="baseLayout">
+        <put-attribute name="title" value="Lịch khám cá nhân" />
+        <put-attribute name="content" value="/WEB-INF/jsp/lichkhamcanhan.jsp" />
+    </definition>
+    
+    <definition name="guimail" extends="baseLayout">
+        <put-attribute name="title" value="Gửi mail" />
+        <put-attribute name="content" value="/WEB-INF/jsp/guimail.jsp" />
+    </definition>
+    
+    <!--/////////////////////////////////////////////////////////////////-->
+    
     <definition name="baseAdminLayout" template="/WEB-INF/layout/base-admin.jsp">
         <put-attribute name="title" value="Quản trị hệ thống phòng mạch" />
         <put-attribute name="left" value="/WEB-INF/layout/admin-left.jsp" />

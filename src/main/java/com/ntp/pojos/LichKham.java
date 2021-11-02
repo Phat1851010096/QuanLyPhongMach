@@ -6,6 +6,7 @@
 package com.ntp.pojos;
 
 import java.io.Serializable;
+import java.util.Collection;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,14 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
@@ -47,13 +44,22 @@ public class LichKham implements Serializable {
     private String ghichu;
     @Column(name = "ngaydangky")
     private String ngaydangky;
+    
     @JoinColumn(name = "idBN", referencedColumnName = "idBN")
     @ManyToOne
     private BenhNhan benhnhan;
+    
     @JoinColumn(name = "idNV", referencedColumnName = "idNV")
     @ManyToOne
     private NhanVien nhanvien;
 
+    @JoinColumn(name = "idgiokham", referencedColumnName = "idgiokham")
+    @ManyToOne
+    private GioKham giokham;
+    
+    @OneToMany(mappedBy = "lichkham")
+    private Collection<User> userCollection;
+    
     public LichKham() {
     }
 
@@ -114,7 +120,20 @@ public class LichKham implements Serializable {
         this.nhanvien = nhanvien;
     }
 
-    
+    public GioKham getGiokham() {
+        return giokham;
+    }
 
+    public void setGiokham(GioKham giokham) {
+        this.giokham = giokham;
+    }
+
+    public Collection<User> getUserCollection() {
+        return userCollection;
+    }
+
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
+    }
     
 }

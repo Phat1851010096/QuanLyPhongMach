@@ -67,5 +67,10 @@ public class NhanVienServiceImpl implements NhanVienService{
     public List<Object[]> getExperNhanVien(int num) {
         return this.nhanVienRepository.getExperNhanVien(num);
     }
+
+    @Override
+    public List<NhanVien> getNhanVienList() {
+        return this.nhanVienRepository.getNhanVienList();
+    }
     
 }

@@ -10,11 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import com.ntp.service.BenhNhanService;
-import com.ntp.service.ThuocService;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 /**
  *
@@ -25,9 +22,14 @@ public class BenhNhanController {
     @Autowired
     private BenhNhanService benhNhanService;
     
-    @GetMapping("/benhnhan/{idBN}")
-    public String detail(Model model,@PathVariable(value = "idBN") int idBN){
-        model.addAttribute("thuoc", this.benhNhanService.getBenhNhanById(idBN));
+    @GetMapping("/hosobenhnhan")
+    public String detail(Model model, 
+            @RequestParam(name = "idBN", defaultValue = "0") int idBN){
+        if (idBN > 0) // cập nhật
+            model.addAttribute("benhnhan", this.benhNhanService.getBenhNhanById(idBN));
+        else // thêm
+            model.addAttribute("benhnhan", new BenhNhan());
+
         return "hosobenhnhan";
     }
 }

@@ -68,7 +68,7 @@
         <h1 class="text-center text-info">TRANG THỐNG KÊ - BÁO CÁO</h1>
         
         <div class="text-center">
-            <a class="btn_2 d-none d-lg-block" style="margin-left: 700px; margin-right: 700px"  href="<c:url value="/" />">
+            <a class="btn_2 d-none d-lg-block" style="margin-left: 600px; margin-right: 600px"  href="<c:url value="/" />">
                 <i class="far fa-hand-point-left" style="font-size: 20px"></i>&ensp;TRỜ VỀ TRANG CHỦ
             </a>
         </div>

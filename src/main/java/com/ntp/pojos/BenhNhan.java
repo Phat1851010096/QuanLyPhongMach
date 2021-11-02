@@ -6,7 +6,9 @@
 package com.ntp.pojos;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +20,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -38,7 +41,7 @@ public class BenhNhan implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idBN")
-    private Integer idBN;
+    private int idBN;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
@@ -70,18 +73,22 @@ public class BenhNhan implements Serializable {
     @Size(min = 1, max = 100)
     @Column(name = "emailBN")
     private String emailBN;
-    @JoinColumn(name = "idU", referencedColumnName = "id")
-    @ManyToOne
-    private User idU;
+    
+    @OneToMany(mappedBy = "benhnhan")
+    private Collection<User> userCollection;
+    
+    @OneToMany(mappedBy = "benhnhan")
+    private Collection<LichKham> lichKhamCollection;
+
 
     public BenhNhan() {
     }
 
-    public BenhNhan(Integer idBN) {
+    public BenhNhan(int idBN) {
         this.idBN = idBN;
     }
 
-    public BenhNhan(Integer idBN, String tenBN, Date ngaysinh, String gioitinh, String diachi, String sdt, String emailBN) {
+    public BenhNhan(int idBN, String tenBN, Date ngaysinh, String gioitinh, String diachi, String sdt, String emailBN) {
         this.idBN = idBN;
         this.tenBN = tenBN;
         this.ngaysinh = ngaysinh;
@@ -91,11 +98,11 @@ public class BenhNhan implements Serializable {
         this.emailBN = emailBN;
     }
 
-    public Integer getIdBN() {
+    public int getIdBN() {
         return idBN;
     }
 
-    public void setIdBN(Integer idBN) {
+    public void setIdBN(int idBN) {
         this.idBN = idBN;
     }
 
@@ -147,37 +154,21 @@ public class BenhNhan implements Serializable {
         this.emailBN = emailBN;
     }
 
-    public User getIdU() {
-        return idU;
+    public Collection<User> getUserCollection() {
+        return userCollection;
     }
 
-    public void setIdU(User idU) {
-        this.idU = idU;
+    public void setUserCollection(Collection<User> userCollection) {
+        this.userCollection = userCollection;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (idBN != null ? idBN.hashCode() : 0);
-        return hash;
+    public Collection<LichKham> getLichKhamCollection() {
+        return lichKhamCollection;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof BenhNhan)) {
-            return false;
-        }
-        BenhNhan other = (BenhNhan) object;
-        if ((this.idBN == null && other.idBN != null) || (this.idBN != null && !this.idBN.equals(other.idBN))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.ntp.pojos.Benhnhan[ idBN=" + idBN + " ]";
+    public void setLichKhamCollection(Collection<LichKham> lichKhamCollection) {
+        this.lichKhamCollection = lichKhamCollection;
     }
     
+
 }

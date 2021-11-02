@@ -13,6 +13,6 @@ import java.util.List;
  * @author Phat Nguyen
  */
 public interface BenhNhanRepository {
-    boolean addBenhNhan(BenhNhan benhnhan);
+    boolean addOrUpdateBenhNhan(BenhNhan benhnhan);
     BenhNhan getBenhNhanById(int id);
 }

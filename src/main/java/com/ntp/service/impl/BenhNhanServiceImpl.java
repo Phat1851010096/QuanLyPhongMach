@@ -30,9 +30,9 @@ public class BenhNhanServiceImpl implements BenhNhanService{
 
 
     @Override
-    public boolean addBenhNhan(BenhNhan benhnhan) {
+    public boolean addOrUpdateBenhNhan(BenhNhan benhnhan) {
 
-        return this.benhNhanRepository.addBenhNhan(benhnhan);
+        return this.benhNhanRepository.addOrUpdateBenhNhan(benhnhan);
     }
 
 

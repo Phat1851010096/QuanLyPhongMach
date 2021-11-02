@@ -80,6 +80,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().accessDeniedPage("/login?accessDenied");
         
         http.authorizeRequests().antMatchers("/").permitAll()
+                .antMatchers("/**/thanhtoan")
+                .access("hasRole('ROLE_YTA')")
                 .antMatchers("/**/medicine")
                 .access("hasAnyRole('ROLE_ADMIN' ,'ROLE_BACSY')")
                 .antMatchers("/admin/**")

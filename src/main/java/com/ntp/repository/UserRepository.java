@@ -5,7 +5,6 @@
  */
 package com.ntp.repository;
 
-import com.ntp.pojos.BenhNhan;
 import com.ntp.pojos.User;
 import java.util.List;
 
@@ -15,7 +14,6 @@ import java.util.List;
  */
 public interface UserRepository {
     boolean addUser(User user);
-    boolean addBenhNhan(BenhNhan benhnhan);
     List<User> getUsers(String username);
     User getUserById(int id);
 }

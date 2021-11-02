@@ -43,11 +43,19 @@
                                         Kê toa thuốc
                                         <div class="badge badge-danger" id="toaThuocCounter">${toaThuocCounter}</div>
                                     </a>
-                                    <a class="dropdown-item" href="<c:url value="/" />"><i class="fas fa-file-invoice-dollar"></i>&ensp;
+                                    <a class="dropdown-item" href="<c:url value="/hoadonthuoc" />"><i class="fas fa-file-invoice-dollar"></i>&ensp;
                                         Hóa đơn thuốc
                                     </a>
-                                    <a class="dropdown-item" href="<c:url value="/" />"><i class="fas fa-file-alt"></i>&ensp;
+                                    <a class="dropdown-item" href="<c:url value="/hosobenhnhan/?idBN=${currentUser.benhnhan.idBN}" />"><i class="fas fa-file-alt"></i>&ensp;
                                         Hồ sơ bệnh nhân
+                                    </a>
+                                    <a class="dropdown-item" href="<c:url value="/lichkhambenhnhan" />">
+                                        <i class="far fa-calendar-alt"></i>&ensp;
+                                        Lịch khám bệnh nhân
+                                    </a>
+                                    <a class="dropdown-item" href="<c:url value="/lichkhamcanhan/?idBN=${currentUser.benhnhan.idBN}&idLK=${currentUser.lichkham.benhnhan.idBN}" />">
+                                        <i class="far fa-calendar-alt"></i>&ensp;
+                                        Lịch khám cá nhân
                                     </a>
                                 </div>
                             </li>

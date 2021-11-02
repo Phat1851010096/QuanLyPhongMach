@@ -66,16 +66,5 @@ public class UserRepositoryImpl implements UserRepository{
         return session.get(User.class, id);
     }
 
-    @Override
-    public boolean addBenhNhan(BenhNhan benhnhan) {
-        Session s = sessionFactory.getObject().getCurrentSession();
-        try {
-            s.save(benhnhan);
-            return true;
-        } catch (HibernateException ex) {
-            System.err.println(ex.getMessage());
-        }
-        return false;
-    }
     
 }

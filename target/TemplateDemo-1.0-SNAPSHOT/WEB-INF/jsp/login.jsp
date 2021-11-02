@@ -24,7 +24,7 @@
 
 <c:if test="${param.accessDenied != null}">
     <div class="alert alert-danger">
-        Ban khong co quyen truy cap!
+        Bạn không có quyền truy cập!
     </div>
 </c:if>
 

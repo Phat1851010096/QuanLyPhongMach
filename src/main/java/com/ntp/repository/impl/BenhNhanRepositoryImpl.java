@@ -6,7 +6,10 @@
 package com.ntp.repository.impl;
 
 import com.ntp.pojos.BenhNhan;
+import com.ntp.pojos.LichKham;
+import com.ntp.pojos.NhanVien;
 import com.ntp.pojos.Thuoc;
+import com.ntp.pojos.User;
 import java.util.List;
 import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -32,14 +35,21 @@ public class BenhNhanRepositoryImpl implements BenhNhanRepository{
     private LocalSessionFactoryBean sessionFactory;
 
     @Override
-    public boolean addBenhNhan(BenhNhan benhnhan) {
-        Session s = sessionFactory.getObject().getCurrentSession();
-        try {
-            s.save(benhnhan);
+    public boolean addOrUpdateBenhNhan(BenhNhan benhnhan) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+            if(benhnhan.getIdBN() > 0)
+                session.update(benhnhan);
+            else
+                session.flush();
+            session.save(benhnhan);
+            
             return true;
-        } catch (HibernateException ex) {
-            System.err.println(ex.getMessage());
+        } catch(Exception ex){
+            System.err.println("=== ADD BENH NHAN ERR ===" + ex.getMessage());
+            ex.printStackTrace();
         }
+
         return false;
     }
 
@@ -50,4 +60,5 @@ public class BenhNhanRepositoryImpl implements BenhNhanRepository{
         
         return session.get(BenhNhan.class, id);
     }
+
 }

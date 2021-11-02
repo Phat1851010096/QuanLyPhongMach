@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Transient;
@@ -33,7 +35,7 @@ public class User implements Serializable{
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "id")
-    private Integer id;
+    private int id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 45)
@@ -49,15 +51,10 @@ public class User implements Serializable{
     @Size(max = 150)
     @Column(name = "avatar")
     private String avatar;
-    @OneToMany(mappedBy = "idU")
-    private Collection<NhanVien> nhanvienCollection;
-    @OneToMany(mappedBy = "idU")
-    private Collection<BenhNhan> benhnhanCollection;
     
     public static final String ADMIN = "ROLE_ADMIN";
     public static final String USER = "ROLE_USER";
     
-
     
     @Column(name = "user_role")
     private String userRole;
@@ -68,6 +65,18 @@ public class User implements Serializable{
     
     @Transient
     private String confirmPassword;
+    
+    @JoinColumn(name = "idNV", referencedColumnName = "idNV")
+    @ManyToOne
+    private NhanVien nhanvien;
+    
+    @JoinColumn(name = "idBN", referencedColumnName = "idBN")
+    @ManyToOne
+    private BenhNhan benhnhan;
+    
+    @JoinColumn(name = "idLK", referencedColumnName = "idLK")
+    @ManyToOne
+    private LichKham lichkham;
 
     public int getId() {
         return id;
@@ -159,50 +168,28 @@ public class User implements Serializable{
         this.active = active;
     }
 
-
-    @XmlTransient
-    public Collection<NhanVien> getNhanvienCollection() {
-        return nhanvienCollection;
+    public NhanVien getNhanvien() {
+        return nhanvien;
     }
 
-    public void setNhanvienCollection(Collection<NhanVien> nhanvienCollection) {
-        this.nhanvienCollection = nhanvienCollection;
+    public void setNhanvien(NhanVien nhanvien) {
+        this.nhanvien = nhanvien;
     }
 
-    @XmlTransient
-    public Collection<BenhNhan> getBenhnhanCollection() {
-        return benhnhanCollection;
+    public BenhNhan getBenhnhan() {
+        return benhnhan;
     }
 
-    public void setBenhnhanCollection(Collection<BenhNhan> benhnhanCollection) {
-        this.benhnhanCollection = benhnhanCollection;
+    public void setBenhnhan(BenhNhan benhnhan) {
+        this.benhnhan = benhnhan;
     }
 
-    @Override
-    public int hashCode() {
-        int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
-        return hash;
+    public LichKham getLichkham() {
+        return lichkham;
     }
 
-    @Override
-    public boolean equals(Object object) {
-        // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
-            return false;
-        }
-        User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
-            return false;
-        }
-        return true;
-    }
-
-    @Override
-    public String toString() {
-        return "com.ntp.pojos.User[ id=" + id + " ]";
+    public void setLichkham(LichKham lichkham) {
+        this.lichkham = lichkham;
     }
     
-    
-
 }

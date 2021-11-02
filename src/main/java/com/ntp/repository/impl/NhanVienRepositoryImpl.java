@@ -123,5 +123,13 @@ public class NhanVienRepositoryImpl implements NhanVienRepository{
         q.setMaxResults(num);
         return q.getResultList();
     }
+
+    @Override
+    public List<NhanVien> getNhanVienList() {
+        Session s = sessionFactory.getObject().getCurrentSession();
+        Query q = s.createQuery("FROM NhanVien");
+        
+        return q.getResultList();
+    }
     
 }

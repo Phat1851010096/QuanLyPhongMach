@@ -16,6 +16,7 @@
     <class>com.ntp.pojos.PhieuKhamBenh</class>
     <class>com.ntp.pojos.ChiTietToaThuoc</class>
     <class>com.ntp.pojos.HoaDonKhamBenh</class>
+    <class>com.ntp.pojos.GioKham</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/qlphongmachtu?zeroDateTimeBehavior=CONVERT_TO_NULL"/>

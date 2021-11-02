@@ -87,9 +87,4 @@ public class UserServiceImpl implements UserService{
         return this.userRepository.getUserById(id);
     }
 
-    @Override
-    public boolean addBenhNhan(BenhNhan benhnhan) {
-        return this.userRepository.addBenhNhan(benhnhan); 
-    }
-    
 }
