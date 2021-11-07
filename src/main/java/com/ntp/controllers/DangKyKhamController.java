@@ -43,12 +43,8 @@ public class DangKyKhamController {
     
     @GetMapping("/dangkykham") 
     public String dangkykhamView(Model model,
-                @RequestParam(name = "idBN", defaultValue = "0") int idBN,
                 @RequestParam(name = "idLK", defaultValue = "0") int idLK){
-        if (idBN > 0) // cập nhật
-            model.addAttribute("benhnhan", this.benhNhanService.getBenhNhanById(idBN));
-        else // thêm
-            model.addAttribute("benhnhan", new BenhNhan());
+
         
         if(idLK > 0)
             model.addAttribute("dangky", this.lichKhamService.getLichKhamById(idLK));
@@ -58,8 +54,25 @@ public class DangKyKhamController {
         return "dangkykham";
     }
     
+//    @PostMapping("/dangkykham")
+//    public String addOrUpdateBenhNhan(Model model, @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date ,@ModelAttribute(value = "benhnhan") @Valid BenhNhan benhnhan, 
+//            BindingResult bindingResult){
+//
+//
+//        if (bindingResult.hasErrors()) {
+//            return "dangkykham";
+//        }
+//        
+//        if (!this.benhNhanService.addOrUpdateBenhNhan(benhnhan)) {
+//            model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
+//            return "dangkykham";
+//        }
+//        
+//        return "redirect:dangkykham";
+//    }
+    
     @PostMapping("/dangkykham")
-    public String addOrUpdateBenhNhan(Model model, @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date ,@ModelAttribute(value = "benhnhan") @Valid BenhNhan benhnhan, 
+    public String addLichKham(Model model, @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss") Date date ,@ModelAttribute(value = "dangky") @Valid LichKham lichkham, 
             BindingResult bindingResult){
 
 
@@ -67,12 +80,12 @@ public class DangKyKhamController {
             return "dangkykham";
         }
         
-        if (!this.benhNhanService.addOrUpdateBenhNhan(benhnhan)) {
+        if (!this.lichKhamService.addLichKham(lichkham)) {
             model.addAttribute("errMsg", "Hệ thóng đang có lỗi! Vui lòng quay lại sau!");
-            return "quanlynhanvien";
+            return "dangkykham";
         }
         
-        return "redirect:dangkykham";
+        return "redirect:/";
     }
 
 }

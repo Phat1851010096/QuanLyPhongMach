@@ -6,7 +6,7 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <br>
 <br>
@@ -96,8 +96,7 @@
         <form:input type="file" id="image" 
                     path="file" cssClass="form-control" />
     </div>
-      
-    
+
     <div class="form-group">
         <form:hidden path="idNV"/>
         <c:if test="${nhanvien.idNV > 0}">

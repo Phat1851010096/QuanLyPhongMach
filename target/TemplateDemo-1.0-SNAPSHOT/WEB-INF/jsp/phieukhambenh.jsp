@@ -51,3 +51,8 @@
         </div>
     </c:forEach>
 </div>
+
+<br><br>
+<div>
+    <a href="<c:url value="/quanlyphieukhambenh" />" class="btn btn-warning"><i class="fas fa-user-plus"/>&ensp;Thêm phiếu khám mới</i></a>
+</div>

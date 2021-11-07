@@ -9,6 +9,7 @@ import com.ntp.pojos.BenhNhan;
 import com.ntp.pojos.ChiTietToaThuoc;
 import com.ntp.pojos.HoaDonKhamBenh;
 import com.ntp.pojos.LichKham;
+import com.ntp.pojos.PhieuKhamBenh;
 import com.ntp.pojos.Thuoc;
 import com.ntp.repository.StatsRepository;
 import java.util.ArrayList;
@@ -35,16 +36,6 @@ public class StatsRepositoryImpl implements StatsRepository{
     
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
-
-    @Override
-    public int benhNhanStats() {
-        Session session = this.sessionFactory.getObject().getCurrentSession();
-        Query q = session.createQuery("Select Count(idBN) from HoaDonKhamBenh");
-        
-        Object o = q.getSingleResult();
-        
-        return Integer.parseInt(o.toString());
-    }
 
     @Override
     public List<Object[]> doanhThuStats(String kw, Date fromDate, Date toDate) {
@@ -82,7 +73,7 @@ public class StatsRepositoryImpl implements StatsRepository{
     }
 
     @Override
-    public List<Object[]> doanhThuMonthStats(String kw, Date fromDate, Date toDate) {
+    public List<Object[]> doanhThuMonthStats(Date fromDate, Date toDate) {
         Session session = this.sessionFactory.getObject().getCurrentSession();
         
         CriteriaBuilder b = session.getCriteriaBuilder();
@@ -101,9 +92,6 @@ public class StatsRepositoryImpl implements StatsRepository{
                 b.function("YEAR", Integer.class, rootHD.get("ngaylapHDKB")),
                 b.sum(b.prod(rootCT.get("dongia"), rootCT.get("soluong"))));
         
-        if(kw != null && !kw.isEmpty())
-            predicates.add(b.like(rootT.get("tenthuoc"), String.format("%%%s%%", kw)));
-        
         if(fromDate != null)
             predicates.add(b.greaterThanOrEqualTo(rootHD.get("ngaylapHDKB"), fromDate));
         
@@ -112,6 +100,89 @@ public class StatsRepositoryImpl implements StatsRepository{
             
         q.where(predicates.toArray(new Predicate[] {}));
         q.groupBy(b.function("MONTH", Integer.class, rootHD.get("ngaylapHDKB")),
+                b.function("YEAR", Integer.class, rootHD.get("ngaylapHDKB")));
+        
+        Query query = session.createQuery(q);
+        
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Object[]> soLuongBenhNhanMonthStats() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
+        
+        Root rootPK = q.from(PhieuKhamBenh.class);
+        
+
+        
+        //Thống kê theo tháng của năm
+        q.multiselect(b.function("MONTH", Integer.class, rootPK.get("ngaykham")),
+                b.function("YEAR", Integer.class, rootPK.get("ngaykham")),
+                b.count(rootPK.get("idPKB")));
+
+        q.groupBy(b.function("MONTH", Integer.class, rootPK.get("ngaykham")),
+                b.function("YEAR", Integer.class, rootPK.get("ngaykham")));
+        
+        Query query = session.createQuery(q);
+        
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Object[]> soLuongBenhNhanYearStats() {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
+        
+        Root rootPK = q.from(PhieuKhamBenh.class);
+        
+
+        
+        //Thống kê theo tháng của năm
+        q.multiselect(
+                b.function("YEAR", Integer.class, rootPK.get("ngaykham")),
+                b.count(rootPK.get("idPKB")));
+
+        q.groupBy(
+                b.function("YEAR", Integer.class, rootPK.get("ngaykham")));
+        
+        Query query = session.createQuery(q);
+        
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Object[]> doanhThuYearStats(Date fromDate, Date toDate) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        
+        CriteriaBuilder b = session.getCriteriaBuilder();
+        CriteriaQuery<Object[]> q = b.createQuery(Object[].class);
+        
+        Root rootT = q.from(Thuoc.class);
+        Root rootHD = q.from(HoaDonKhamBenh.class);
+        Root rootCT = q.from(ChiTietToaThuoc.class);
+        
+        List<Predicate> predicates = new ArrayList<>();
+        predicates.add(b.equal(rootCT.get("thuoc"), rootT.get("idthuoc")));
+        predicates.add(b.equal(rootCT.get("idHDKB"), rootHD.get("idHDKB")));
+        
+        //Thống kê theo tháng của năm
+        q.multiselect(
+                b.function("YEAR", Integer.class, rootHD.get("ngaylapHDKB")),
+                b.sum(b.prod(rootCT.get("dongia"), rootCT.get("soluong"))));
+        
+        if(fromDate != null)
+            predicates.add(b.greaterThanOrEqualTo(rootHD.get("ngaylapHDKB"), fromDate));
+        
+        if(toDate != null)
+            predicates.add(b.lessThanOrEqualTo(rootHD.get("ngaylapHDKB"), toDate));
+            
+        q.where(predicates.toArray(new Predicate[] {}));
+        q.groupBy(
                 b.function("YEAR", Integer.class, rootHD.get("ngaylapHDKB")));
         
         Query query = session.createQuery(q);

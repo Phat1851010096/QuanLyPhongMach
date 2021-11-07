@@ -8,8 +8,10 @@ package com.ntp.configs;
 import com.cloudinary.Cloudinary;
 import com.cloudinary.utils.ObjectUtils;
 import com.ntp.formatter.ChucVuFormatter;
+import com.ntp.formatter.GioKhamFormatter;
 import com.ntp.formatter.LichTrucFormatter;
 import com.ntp.formatter.LoaiThuocFormatter;
+import com.ntp.formatter.NhanVienFormatter;
 import com.ntp.validator.thuocValidator;
 import com.ntp.validator.WebAppValidator;
 import java.util.HashSet;
@@ -70,6 +72,8 @@ public class WebApplicationContextConfig implements WebMvcConfigurer{
         registry.addFormatter(new LoaiThuocFormatter());
         registry.addFormatter(new ChucVuFormatter());
         registry.addFormatter(new LichTrucFormatter());
+        registry.addFormatter(new GioKhamFormatter());
+        registry.addFormatter(new NhanVienFormatter());
     }
     
     

@@ -6,17 +6,6 @@
 package com.ntp.repository.impl;
 
 import com.ntp.pojos.BenhNhan;
-import com.ntp.pojos.LichKham;
-import com.ntp.pojos.NhanVien;
-import com.ntp.pojos.Thuoc;
-import com.ntp.pojos.User;
-import java.util.List;
-import javax.persistence.Query;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;

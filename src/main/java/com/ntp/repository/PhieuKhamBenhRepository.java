@@ -16,4 +16,6 @@ public interface PhieuKhamBenhRepository {
     List<PhieuKhamBenh> getPhieuKhamBenh(String kw, int page);
     PhieuKhamBenh getPhieuKhamBenhById(int id);
     int countPhieuKhamBenh();
+    boolean addOrUpdatePhieuKhamBenh(PhieuKhamBenh phieukhambenh);
+    boolean deletePhieuKhamBenh(int phieukhambenhId);
 }

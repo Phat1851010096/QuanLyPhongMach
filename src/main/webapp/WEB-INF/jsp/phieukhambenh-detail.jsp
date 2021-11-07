@@ -23,14 +23,19 @@
     </div>
     <div class="col-md-6">
         <h1>${phieukhambenh.tenPKB}</h1>
-        <h3>Tên bệnh nhân: ${phieukhambenh.benhNhan.tenBN}</h3>
-        <h3>Tên nhân viên khám: ${phieukhambenh.idNV.tenNV}</h3>
+        <h3>Tên bệnh nhân: ${phieukhambenh.tenbenhnhan}</h3>
+        <h3>Tên nhân viên khám: ${phieukhambenh.nhanvien.tenNV}</h3>
         <h3>Triệu chứng: ${phieukhambenh.trieuchung}</h3>
         <h3>Chuẩn đoán: ${phieukhambenh.chandoan}</h3>
         <h3>Ngày khám: ${phieukhambenh.ngaykham}</h3>
         <h3>Lịch hẹn: ${phieukhambenh.lichhen}</h3>
         <h3>Ghi chú: ${phieukhambenh.ghichu}</h3>
-
+        <a href="javascript:;" class="btn btn-danger" onclick="deletePhieuKhamBenh(${phieukhambenh.idPKB})">Xóa</a>
+        <a href="<c:url value="/quanlyphieukhambenh/?idPKB=${phieukhambenh.idPKB}" />" class="btn btn-info">Cập nhật</a>
+        <br><br>
+        <a href="<c:url value="/phieukhambenh" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
     </div> 
 </div>
+    
+<script src="<c:url value="/js/main.js" />"></script>
 

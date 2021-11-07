@@ -40,6 +40,7 @@ public class LoaiThuoc implements Serializable {
     @Size(max = 50)
     @Column(name = "tenloaithuoc")
     private String tenloaithuoc;
+    
     @OneToMany(mappedBy = "loaithuoc", fetch = FetchType.EAGER)
     private List<Thuoc> thuocCollection;
 

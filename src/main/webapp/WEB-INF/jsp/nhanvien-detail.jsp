@@ -36,43 +36,6 @@
         <a href="<c:url value="/admin/nhanvien" />" class="btn btn-warning"><i class="fas fa-sync-alt"/>&ensp;Reload</i></a>
     </div> 
 </div>
-<!--<br><br> 
-<form>
-    <div class="form-group">
-        <textarea class="form-control" placeholder="Nhập đánh giá nhân viên ..."></textarea>
-        <br> 
-        <input type="submit" value="Gửi đánh giá" class="btn btn-danger" />
-    </div>
-</form>
 
-<div class="row">
-    <div class="col-md-1" style="padding: 10px">
-        &ensp;&ensp;<img class="rounded-circle img-fluid" src="<c:url value="/images/author/author_1.png" />" />
-    </div>
-    <div class="col-md-11">
-        <p>Tuyệt vời!</p>
-        <i>14/10/2021 8:12AM</i>
-    </div>
-</div>
-    
-<div class="row">
-    <div class="col-md-1" style="padding: 10px">
-        &ensp;&ensp;<img class="rounded-circle img-fluid" src="<c:url value="/images/author/author_1.png" />" />
-    </div>
-    <div class="col-md-11">
-        <p>Tuyệt vời!</p>
-        <i>14/10/2021 8:12AM</i>
-    </div>
-</div>
-    
-<div class="row">
-    <div class="col-md-1" style="padding: 10px">
-        &ensp;&ensp;<img class="rounded-circle img-fluid" src="<c:url value="/images/author/author_1.png" />" />
-    </div>
-    <div class="col-md-11">
-        <p>Tuyệt vời!</p>
-        <i>14/10/2021 8:12AM</i>
-    </div>
-</div>-->
         
 <script src="<c:url value="/js/main.js" />"></script>

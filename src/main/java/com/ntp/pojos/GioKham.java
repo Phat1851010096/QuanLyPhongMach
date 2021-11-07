@@ -31,7 +31,7 @@ public class GioKham implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idgiokham")
-    private Integer idgiokham;
+    private int idgiokham;
     @Size(max = 60)
     @Column(name = "giokham")
     private String giokham;
@@ -42,15 +42,15 @@ public class GioKham implements Serializable {
     public GioKham() {
     }
 
-    public GioKham(Integer idgiokham) {
+    public GioKham(int idgiokham) {
         this.idgiokham = idgiokham;
     }
 
-    public Integer getIdgiokham() {
+    public int getIdgiokham() {
         return idgiokham;
     }
 
-    public void setIdgiokham(Integer idgiokham) {
+    public void setIdgiokham(int idgiokham) {
         this.idgiokham = idgiokham;
     }
 

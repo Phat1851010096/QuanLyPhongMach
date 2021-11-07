@@ -15,4 +15,5 @@ import java.util.List;
 public interface LichKhamRepository {
     List<LichKham> getLichKham();
     LichKham getLichKhamById(int id);
+    boolean addLichKham(LichKham lichkham);
 }

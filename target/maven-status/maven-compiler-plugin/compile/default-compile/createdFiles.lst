@@ -75,6 +75,7 @@ com\ntp\service\UserService.class
 com\ntp\validator\thuocValidator.class
 com\ntp\controllers\QuanLyThuocController.class
 com\ntp\repository\HoaDonRepository.class
+com\ntp\controllers\QuanLyPhieuKhamBenh.class
 com\ntp\pojos\LichKham.class
 com\ntp\controllers\BenhNhanController.class
 com\ntp\repository\ThuocRepository.class

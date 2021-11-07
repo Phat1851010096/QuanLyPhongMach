@@ -53,7 +53,7 @@
                                         <i class="far fa-calendar-alt"></i>&ensp;
                                         Lịch khám bệnh nhân
                                     </a>
-                                    <a class="dropdown-item" href="<c:url value="/lichkhamcanhan/?idBN=${currentUser.benhnhan.idBN}&idLK=${currentUser.lichkham.benhnhan.idBN}" />">
+                                    <a class="dropdown-item" href="<c:url value="/lichkhamcanhan/?idBN=${currentUser.benhnhan.idBN}" />">
                                         <i class="far fa-calendar-alt"></i>&ensp;
                                         Lịch khám cá nhân
                                     </a>

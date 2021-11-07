@@ -9,6 +9,7 @@ import com.ntp.service.BenhNhanService;
 import com.ntp.service.LichKhamService;
 import com.ntp.service.NhanVienService;
 import com.ntp.service.UserService;
+import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

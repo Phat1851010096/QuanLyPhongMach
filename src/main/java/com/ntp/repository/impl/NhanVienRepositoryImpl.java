@@ -46,8 +46,8 @@ public class NhanVienRepositoryImpl implements NhanVienRepository{
         }
         
         Query q = s.createQuery(query);
-        q.setFirstResult((page - 1) * 9);
-        q.setMaxResults(9);
+        q.setFirstResult((page - 1) * 8);
+        q.setMaxResults(8);
         
         return q.getResultList();
     }

@@ -7,6 +7,7 @@ package com.ntp.pojos;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -20,9 +21,12 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlTransient;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.web.multipart.MultipartFile;
 
 /**
  *
@@ -59,14 +63,14 @@ public class PhieuKhamBenh implements Serializable {
     private String chandoan;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "ngaykham")
-    private String ngaykham;
+    private Date ngaykham;
     @Basic(optional = false)
     @NotNull
-    @Size(min = 1, max = 10)
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     @Column(name = "lichhen")
-    private String lichhen;
+    private Date lichhen;
     @Lob
     @Size(max = 2147483647)
     @Column(name = "ghichu")
@@ -74,14 +78,16 @@ public class PhieuKhamBenh implements Serializable {
     @Size(max = 240)
     @Column(name = "hinhanh")
     private String hinhanh;
-    @JoinColumns({
-        @JoinColumn(name = "benhnhan_id", referencedColumnName = "idBN")})
-    @ManyToOne(optional = false)
-    private BenhNhan benhNhan;
+    
+    private String tenbenhnhan;
+    
     @JoinColumns({
         @JoinColumn(name = "nhanvien_id", referencedColumnName = "idNV")})
     @ManyToOne(optional = false)
-    private NhanVien idNV;
+    private NhanVien nhanvien;
+    
+    @Transient
+    private MultipartFile file;
 
     public PhieuKhamBenh() {
     }
@@ -90,7 +96,7 @@ public class PhieuKhamBenh implements Serializable {
         this.idPKB = idPKB;
     }
 
-    public PhieuKhamBenh(int idPKB, String tenPKB, String trieuchung, String chandoan, String ngaykham, String lichhen) {
+    public PhieuKhamBenh(int idPKB, String tenPKB, String trieuchung, String chandoan, Date ngaykham, Date lichhen) {
         this.idPKB = idPKB;
         this.tenPKB = tenPKB;
         this.trieuchung = trieuchung;
@@ -131,19 +137,19 @@ public class PhieuKhamBenh implements Serializable {
         this.chandoan = chandoan;
     }
 
-    public String getNgaykham() {
+    public Date getNgaykham() {
         return ngaykham;
     }
 
-    public void setNgaykham(String ngaykham) {
+    public void setNgaykham(Date ngaykham) {
         this.ngaykham = ngaykham;
     }
 
-    public String getLichhen() {
+    public Date getLichhen() {
         return lichhen;
     }
 
-    public void setLichhen(String lichhen) {
+    public void setLichhen(Date lichhen) {
         this.lichhen = lichhen;
     }
 
@@ -163,21 +169,22 @@ public class PhieuKhamBenh implements Serializable {
         this.hinhanh = hinhanh;
     }
 
-    public BenhNhan getBenhNhan() {
-        return benhNhan;
+    public String getTenbenhnhan() {
+        return tenbenhnhan;
     }
 
-    public void setBenhNhan(BenhNhan benhNhan) {
-        this.benhNhan = benhNhan;
+    public void setTenbenhnhan(String tenbenhnhan) {
+        this.tenbenhnhan = tenbenhnhan;
     }
 
-    public NhanVien getIdNV() {
-        return idNV;
+    public NhanVien getNhanvien() {
+        return nhanvien;
     }
 
-    public void setIdNV(NhanVien idNV) {
-        this.idNV = idNV;
+    public void setNhanvien(NhanVien nhanvien) {
+        this.nhanvien = nhanvien;
     }
+    
 
     @XmlTransient
     public Collection<HoaDonKhamBenh> getHoadonkhambenhCollection() {
@@ -188,5 +195,13 @@ public class PhieuKhamBenh implements Serializable {
         this.hoadonkhambenhCollection = hoadonkhambenhCollection;
     }
 
+    public MultipartFile getFile() {
+        return file;
+    }
+
+    public void setFile(MultipartFile file) {
+        this.file = file;
+    }
+    
     
 }

@@ -13,7 +13,9 @@ import java.util.List;
  * @author Phat Nguyen
  */
 public interface StatsRepository {
-    int benhNhanStats();
     List<Object[]> doanhThuStats(String kw, Date fromDate, Date toDate);
-    List<Object[]> doanhThuMonthStats(String kw, Date fromDate, Date toDate);
+    List<Object[]> doanhThuMonthStats(Date fromDate, Date toDate);
+    List<Object[]> soLuongBenhNhanMonthStats();
+    List<Object[]> soLuongBenhNhanYearStats();
+    List<Object[]> doanhThuYearStats(Date fromDate, Date toDate);
 }

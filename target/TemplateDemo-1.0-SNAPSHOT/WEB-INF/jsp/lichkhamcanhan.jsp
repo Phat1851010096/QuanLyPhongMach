@@ -23,16 +23,18 @@
             <th></th>
         </tr>
         <c:forEach items="dangkykham">
-        <tr>
-            <td>${dangkykham.idLK}</td>
-            <td>${dangkykham.benhnhan.tenBN}</td>
-            <td>${dangkykham.nhanvien.tenNV}</td>  
-            <td>${dangkykham.ngaydangky}</td> 
-            <td>${dangkykham.giokham.giokham}</td>
-            <td>
-                <a href="<c:url value="/" />" class="btn btn-danger">Hủy lịch khám</a>
-            </td>
-        </tr>
+            <tr id="${dangkykham.benhnhan.idBN}">
+                <tr>
+                    <td>${dangkykham.idLK}</td>
+                    <td>${dangkykham.benhnhan.tenBN}</td>
+                    <td>${dangkykham.nhanvien.tenNV}</td>  
+                    <td>${dangkykham.ngaydangky}</td> 
+                    <td>${dangkykham.giokham.giokham}</td>
+                    <td>
+                        <a href="<c:url value="/" />" class="btn btn-danger">Hủy lịch khám</a>
+                    </td>
+                </tr>
+            </tr>
         </c:forEach>
 </table>
 

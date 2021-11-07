@@ -14,6 +14,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
+import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
@@ -66,6 +67,40 @@ public class PhieuKhamBenhRepositoryImpl implements PhieuKhamBenhRepository{
         Object o = q.getSingleResult();
         
         return Integer.parseInt(o.toString());
+    }
+
+    @Override
+    public boolean addOrUpdatePhieuKhamBenh(PhieuKhamBenh phieukhambenh) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+            if(phieukhambenh.getIdPKB() > 0)
+                session.update(phieukhambenh);
+            else
+                session.flush();
+            session.save(phieukhambenh);
+            
+            return true;
+        } catch(Exception ex){
+            System.err.println("=== ADD PHIEU KHAM BENH ERR ===" + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        return false;
+    }
+
+    @Override
+    public boolean deletePhieuKhamBenh(int phieukhambenhId) {
+        try {
+            Session session = this.sessionFactory.getObject().getCurrentSession();
+            PhieuKhamBenh p = session.get(PhieuKhamBenh.class, phieukhambenhId);
+            session.delete(p);
+            
+            return true;
+        } catch (HibernateException ex) {
+            ex.printStackTrace();
+        }
+        
+        return false;
     }
     
 }

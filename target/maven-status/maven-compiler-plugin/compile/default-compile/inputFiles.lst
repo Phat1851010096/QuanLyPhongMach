@@ -38,6 +38,7 @@ E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\configs\TilesConfig.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\repository\BenhNhanRepository.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\repository\impl\ChucVuRepositoryImpl.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\controllers\HomeController.java
+E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\controllers\QuanLyPhieuKhamBenh.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\repository\impl\LoaiThuocRepositoryImpl.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\configs\handlers\LoginSuccessHandler.java
 E:\HocTap\LTJAVA\TemplateDemo\src\main\java\com\ntp\repository\impl\HoaDonRepositoryImpl.java

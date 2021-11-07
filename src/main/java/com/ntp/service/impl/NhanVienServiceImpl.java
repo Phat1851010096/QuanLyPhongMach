@@ -48,7 +48,7 @@ public class NhanVienServiceImpl implements NhanVienService{
             
                      
         } catch (IOException ex) {
-            System.err.println("ADD NHANVIEN ERROR" + ex.getMessage());
+            System.err.println("ADD NHAN VIEN ERROR" + ex.getMessage());
         }      
         return this.nhanVienRepository.addOrUpdateNhanVien(nhanvien); 
     }

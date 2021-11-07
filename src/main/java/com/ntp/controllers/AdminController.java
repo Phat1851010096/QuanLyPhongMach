@@ -30,9 +30,17 @@ public class AdminController {
     @GetMapping("/benhnhan-stats")
     public String benhnhanStats(Model model){
         
-        model.addAttribute("benhNhanStats", this.statsService.benhNhanStats());
+        model.addAttribute("benhNhanStats", this.statsService.soLuongBenhNhanMonthStats());
         
         return "benhnhan-stats";
+    }
+    
+    @GetMapping("/benhnhan-year-stats")
+    public String benhnhanyearStats(Model model){
+        
+        model.addAttribute("benhNhanYearStats", this.statsService.soLuongBenhNhanYearStats());
+        
+        return "benhnhan-year-stats";
     }
     
     @GetMapping("/doanhthu-stats")
@@ -63,7 +71,6 @@ public class AdminController {
     @GetMapping("/doanhthu-month-stats")
     public String doanhThuMonthStats(Model model, @RequestParam(required = false) Map<String, String> params){
         SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-        String kw = params.getOrDefault("kw", null);
         
         Date fromDate = null, toDate = null;
         
@@ -79,7 +86,30 @@ public class AdminController {
             ex.printStackTrace();
         }
         
-        model.addAttribute("doanhThuMonthStats", this.statsService.doanhThuMonthStats(kw, fromDate, toDate));
+        model.addAttribute("doanhThuMonthStats", this.statsService.doanhThuMonthStats(fromDate, toDate));
         return "doanhthu-month-stats";
+    }
+    
+    @GetMapping("/doanhthu-year-stats")
+    public String doanhThuYearStats(Model model, @RequestParam(required = false) Map<String, String> params){
+        SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+ 
+        
+        Date fromDate = null, toDate = null;
+        
+        try {
+            String from = params.getOrDefault("fromDate", null);
+            if(from != null)
+                fromDate = f.parse(from);
+
+            String to = params.getOrDefault("toDate", null);
+            if(to != null)
+                toDate = f.parse(to);
+        } catch (ParseException ex){
+            ex.printStackTrace();
+        }
+        
+        model.addAttribute("doanhThuYearStats", this.statsService.doanhThuYearStats(fromDate, toDate));
+        return "doanhthu-year-stats";
     }
 }

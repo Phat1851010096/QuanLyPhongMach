@@ -7,9 +7,11 @@ package com.ntp.pojos;
 
 import java.io.Serializable;
 import java.util.Collection;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,7 +22,6 @@ import javax.persistence.Table;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import javax.xml.bind.annotation.XmlTransient;
 import org.springframework.web.multipart.MultipartFile;
 
 /**
@@ -74,9 +75,9 @@ public class User implements Serializable{
     @ManyToOne
     private BenhNhan benhnhan;
     
-    @JoinColumn(name = "idLK", referencedColumnName = "idLK")
-    @ManyToOne
-    private LichKham lichkham;
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    private List<LichKham> lichkhamCollection;
+
 
     public int getId() {
         return id;
@@ -184,12 +185,13 @@ public class User implements Serializable{
         this.benhnhan = benhnhan;
     }
 
-    public LichKham getLichkham() {
-        return lichkham;
+    public List<LichKham> getLichkhamCollection() {
+        return lichkhamCollection;
     }
 
-    public void setLichkham(LichKham lichkham) {
-        this.lichkham = lichkham;
+    public void setLichkhamCollection(List<LichKham> lichkhamCollection) {
+        this.lichkhamCollection = lichkhamCollection;
     }
+
     
 }

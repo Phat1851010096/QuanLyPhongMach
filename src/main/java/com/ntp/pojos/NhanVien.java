@@ -38,7 +38,7 @@ public class NhanVien implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "idNV")
-    private Integer idNV;
+    private int idNV;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 50)
@@ -90,11 +90,11 @@ public class NhanVien implements Serializable {
     public NhanVien() {
     }
 
-    public NhanVien(Integer idNV) {
+    public NhanVien(int idNV) {
         this.idNV = idNV;
     }
 
-    public NhanVien(Integer idNV, String tenNV, String gioitinh, Date ngaysinh, String diachi, String sdt, String emailNV) {
+    public NhanVien(int idNV, String tenNV, String gioitinh, Date ngaysinh, String diachi, String sdt, String emailNV) {
         this.idNV = idNV;
         this.tenNV = tenNV;
         this.gioitinh = gioitinh;
@@ -104,11 +104,11 @@ public class NhanVien implements Serializable {
         this.emailNV = emailNV;
     }
 
-    public Integer getIdNV() {
+    public int getIdNV() {
         return idNV;
     }
 
-    public void setIdNV(Integer idNV) {
+    public void setIdNV(int idNV) {
         this.idNV = idNV;
     }
 

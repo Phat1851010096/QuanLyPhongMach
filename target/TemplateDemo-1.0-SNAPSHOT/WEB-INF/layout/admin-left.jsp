@@ -12,13 +12,19 @@
   <!-- Links -->
   <ul class="navbar-nav">
     <li class="nav-item">
-        <a class="nav-link" href="<c:url value="/admin/benhnhan-stats" />">Thống kê số lượng bệnh nhân</a>
+        <a class="nav-link" href="<c:url value="/admin/benhnhan-stats" />">Thống kê số lượng bệnh nhân theo tháng</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="<c:url value="/admin/benhnhan-year-stats" />">Thống kê số lượng bệnh nhân theo năm</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/admin/doanhthu-stats" />">Thống kê doanh thu theo thuốc</a>
     </li>
     <li class="nav-item">
       <a class="nav-link" href="<c:url value="/admin/doanhthu-month-stats" />">Thống kê doanh thu theo tháng</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="<c:url value="/admin/doanhthu-year-stats" />">Thống kê doanh thu theo năm</a>
     </li>
   </ul>
 

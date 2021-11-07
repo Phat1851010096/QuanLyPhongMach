@@ -17,7 +17,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 /**
@@ -35,7 +34,6 @@ public class LichKham implements Serializable {
     @Column(name = "idLK")
     private int idLK;
     @Basic(optional = false)
-    @NotNull
     @Size(min = 1, max = 50)
     @Column(name = "tenLK")
     private String tenLK;
@@ -44,6 +42,8 @@ public class LichKham implements Serializable {
     private String ghichu;
     @Column(name = "ngaydangky")
     private String ngaydangky;
+    
+    private String hoten;
     
     @JoinColumn(name = "idBN", referencedColumnName = "idBN")
     @ManyToOne
@@ -57,8 +57,9 @@ public class LichKham implements Serializable {
     @ManyToOne
     private GioKham giokham;
     
-    @OneToMany(mappedBy = "lichkham")
-    private Collection<User> userCollection;
+    @JoinColumn(name = "id", referencedColumnName = "id")
+    @ManyToOne
+    private User user;
     
     public LichKham() {
     }
@@ -128,12 +129,21 @@ public class LichKham implements Serializable {
         this.giokham = giokham;
     }
 
-    public Collection<User> getUserCollection() {
-        return userCollection;
+    public User getUser() {
+        return user;
     }
 
-    public void setUserCollection(Collection<User> userCollection) {
-        this.userCollection = userCollection;
+    public void setUser(User user) {
+        this.user = user;
     }
+
+    public String getHoten() {
+        return hoten;
+    }
+
+    public void setHoten(String hoten) {
+        this.hoten = hoten;
+    }
+    
     
 }

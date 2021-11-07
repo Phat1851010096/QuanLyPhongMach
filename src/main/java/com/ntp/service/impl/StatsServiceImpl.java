@@ -22,10 +22,6 @@ public class StatsServiceImpl implements StatsService{
     @Autowired
     private StatsRepository statsRepository;
 
-    @Override
-    public int benhNhanStats() {
-        return this.statsRepository.benhNhanStats();
-    }
 
     @Override
     public List<Object[]> doanhThuStats(String kw, Date fromDate, Date toDate) {
@@ -33,8 +29,23 @@ public class StatsServiceImpl implements StatsService{
     }
 
     @Override
-    public List<Object[]> doanhThuMonthStats(String kw, Date fromDate, Date toDate) {
-        return this.statsRepository.doanhThuMonthStats(kw, fromDate, toDate);
+    public List<Object[]> doanhThuMonthStats(Date fromDate, Date toDate) {
+        return this.statsRepository.doanhThuMonthStats(fromDate, toDate);
+    }
+
+    @Override
+    public List<Object[]> soLuongBenhNhanMonthStats() {
+        return this.statsRepository.soLuongBenhNhanMonthStats();
+    }
+
+    @Override
+    public List<Object[]> soLuongBenhNhanYearStats() {
+        return this.statsRepository.soLuongBenhNhanYearStats();
+    }
+
+    @Override
+    public List<Object[]> doanhThuYearStats(Date fromDate, Date toDate) {
+        return this.statsRepository.doanhThuYearStats(fromDate, toDate);
     }
     
 }

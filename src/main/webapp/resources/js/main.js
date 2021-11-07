@@ -44,6 +44,26 @@ function deleteNhanVien(idNV) {
     }
 }
 
+function deletePhieuKhamBenh(idPKB) {
+    if (confirm("Bạn chắc chắn xóa không?") == true) { 
+        fetch(`/TemplateDemo/api/phieukhambenh/${idPKB}`, {
+            method: "delete",
+            headers: {
+                "Content-Type": "application/json"
+            }
+        }).then(res => {
+            
+            if (res.status == 200) {
+                let d = document.getElementById(`phieukhambenh{idPKB}`);
+                alert("Hãy ấn Reload sau khi xóa!!!");
+                d.style.display = "none";
+                
+            } else 
+                alert("Something wrong!!!");
+        })
+    }
+}
+
 function addToToaThuoc(idthuoc, tenthuoc, dongia, cachdung){
     event.preventDefault()
     
@@ -111,7 +131,7 @@ function deleteToaThuoc(idthuoc){
 function thanhtoan(){
     if(confirm("Bạn xác nhận thanh toán?") == true){
         fetch("/TemplateDemo/api/thanhtoan", {
-            method: "post"
+            method: 'post'
         }).then(function(res){
             return res.json();
         }).then(function(code){

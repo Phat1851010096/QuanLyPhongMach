@@ -67,6 +67,11 @@ and open the template in the editor.
         <put-attribute name="content" value="/WEB-INF/jsp/nhanvien-detail.jsp" />
     </definition>
     
+    <definition name="quanlyphieukhambenh" extends="baseLayout">
+        <put-attribute name="title" value="Quản lý phiếu khám bệnh" />
+        <put-attribute name="content" value="/WEB-INF/jsp/quanlyphieukhambenh.jsp" />
+    </definition>
+    
     <definition name="phieukhambenh" extends="baseLayout">
         <put-attribute name="title" value="Phiếu khám bệnh" />
         <put-attribute name="content" value="/WEB-INF/jsp/phieukhambenh.jsp" />
@@ -122,8 +127,13 @@ and open the template in the editor.
     </definition>
     
     <definition name="benhnhan-stats" extends="baseAdminLayout">
-        <put-attribute name="title" value="Thống kê số lượng bệnh nhân" />
+        <put-attribute name="title" value="Thống kê số lượng bệnh nhân theo tháng" />
         <put-attribute name="content" value="/WEB-INF/jsp/benhnhan-stats.jsp" />
+    </definition>
+    
+    <definition name="benhnhan-year-stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thống kê số lượng bệnh nhân theo năm" />
+        <put-attribute name="content" value="/WEB-INF/jsp/benhnhan-year-stats.jsp" />
     </definition>
     
     <definition name="doanhthu-stats" extends="baseAdminLayout">
@@ -134,6 +144,11 @@ and open the template in the editor.
     <definition name="doanhthu-month-stats" extends="baseAdminLayout">
         <put-attribute name="title" value="Thống kê doanh thu theo tháng" />
         <put-attribute name="content" value="/WEB-INF/jsp/doanhthu-month-stats.jsp" />
+    </definition>
+    
+    <definition name="doanhthu-year-stats" extends="baseAdminLayout">
+        <put-attribute name="title" value="Thống kê doanh thu theo năm" />
+        <put-attribute name="content" value="/WEB-INF/jsp/doanhthu-year-stats.jsp" />
     </definition>
     
 </tiles-definitions>

@@ -6,6 +6,7 @@
 package com.ntp.repository.impl;
 
 import com.ntp.pojos.LichKham;
+import com.ntp.repository.BenhNhanRepository;
 import com.ntp.repository.LichKhamRepository;
 import java.util.List;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -27,6 +28,8 @@ import org.springframework.transaction.annotation.Transactional;
 public class LichKhamRepositoryImpl implements LichKhamRepository{
     @Autowired
     private LocalSessionFactoryBean sessionFactory;
+    @Autowired
+    private BenhNhanRepository benhNhanRepository;
 
     @Override
     public LichKham getLichKhamById(int id) {
@@ -46,6 +49,22 @@ public class LichKhamRepositoryImpl implements LichKhamRepository{
         Query q = s.createQuery(query);
         
         return q.getResultList();
+    }
+
+    @Override
+    public boolean addLichKham(LichKham lichkham) {
+        Session session = this.sessionFactory.getObject().getCurrentSession();
+        try{
+
+            session.save(lichkham);
+            
+            return true;
+        } catch(Exception ex){
+            System.err.println("=== DANG KY LICH KHAM ERR ===" + ex.getMessage());
+            ex.printStackTrace();
+        }
+
+        return false;
     }
     
 }

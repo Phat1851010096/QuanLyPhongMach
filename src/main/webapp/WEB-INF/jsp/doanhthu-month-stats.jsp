@@ -11,10 +11,6 @@
 
 <form action="">
     <div class="form-group">
-        <label>Nhập từ khóa</label>
-        <input type="text" name="kw" class="form-control" />
-    </div>
-    <div class="form-group">
         <label>Từ thời điểm</label>
         <input type="date" name="fromDate" class="form-control" />
     </div>
@@ -22,7 +18,7 @@
         <label>Đến thời điểm</label>
         <input type="date" name="toDate" class="form-control" />
     </div>
-    <input type="submit" value="Bao cao" class="btn btn-success" />
+    <input type="submit" value="Báo cáo" class="btn btn-success" />
 </form>
 
 <div>
@@ -46,7 +42,7 @@
 <script>
     let doanhThuLabels=[], doanhThuInfo=[]
     <c:forEach items="${doanhThuMonthStats}" var="dt">
-        doanhThuLabels.push('${dt[1]}')
+        doanhThuLabels.push('${dt[0]}')
         doanhThuInfo.push(${dt[2]})
     </c:forEach>
     

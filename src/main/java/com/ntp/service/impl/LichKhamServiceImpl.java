@@ -30,5 +30,10 @@ public class LichKhamServiceImpl implements LichKhamService{
     public List<LichKham> getLichKham() {
         return this.lichKhamRepository.getLichKham();
     }
+
+    @Override
+    public boolean addLichKham(LichKham lichkham) {
+        return this.lichKhamRepository.addLichKham(lichkham);
+    }
     
 }
